@@ -1,0 +1,12 @@
+<import src="../common/header.wxml" />
+<import src="../common/footer.wxml" />
+
+<view class="container">
+  <template is="header" data="{{title: 'This is a title'}}"/>
+
+   <view class="page-body">
+    body
+   </view>
+
+   <template is="footer" />
+</view>
