@@ -23,7 +23,7 @@ App({
                   wx.setStorageSync('userInfo', res.userInfo);
                   // 用于注册用户
                   wx.request({
-                    url: 'https://域名/loginByWeixin', // 要使用https的api接口
+                    url: 'https://域名/loginByWechat', // 要使用https的api接口
                     method: 'post',
                     header: {
                       'content-type': 'application/x-www-form-urlencoded'
