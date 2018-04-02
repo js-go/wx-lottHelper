@@ -24,7 +24,7 @@ const login = () => {
             success: (res) => {
               wx.setStorageSync('userInfo', res.userInfo);
               wx.request({
-                url: 'https://holdrop.com/api/v1/loginByWeixin',
+                url: 'https://holdrop.com/api/wechat/loginByWeixin',
                 method: 'post',
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
