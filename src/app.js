@@ -11,7 +11,7 @@ App({
     // 登录
     if (!token) {
       util.login().then((token) => {
-        wx.setStorageSync('token', token);
+       if (token) wx.setStorageSync('token', token);
       })
     }
  
