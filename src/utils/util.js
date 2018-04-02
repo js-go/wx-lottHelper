@@ -14,11 +14,41 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const getAuthorize = function(wx, scope) {
-
-}
+const login = () => {
+  return new Promise((resolve, reject) => {
+    wx.login({
+      success: res => {
+        if (res.code) {
+          let code = res.code;
+          wx.getUserInfo({
+            success: (res) => {
+              wx.setStorageSync('userInfo', res.userInfo);
+              wx.request({
+                url: 'https://holdrop.com/api/v1/loginByWeixin',
+                method: 'post',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                  encryptedData: res.encryptedData,
+                  iv: res.iv,
+                  code: code
+                },
+                success: (token) => {
+                  resolve(token);
+                }
+              })
+            }
+          });
+        } else {
+          reject(null);
+        }
+      }
+    });
+  });
+};
 
 module.exports = {
   formatTime: formatTime,
-  getAuthorize: getAuthorize
+  login: login
 }
