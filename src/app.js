@@ -9,6 +9,7 @@ App({
     // wx.setStorageSync('logs', logs)
     let self = this;
     // 登录
+    const token = wx.getStorageSync('token');
     if (!token) {
       util.login().then((token) => {
        if (token) wx.setStorageSync('token', token);
